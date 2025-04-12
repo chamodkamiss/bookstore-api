@@ -1,19 +1,19 @@
 package com.bookstore.model;
 
 public class Customer {
-    private int id;
+    private Long id;
     private String name;
     private String email;
     private String password;
 
-    public Customer(int id, String name, String email, String password) {
+    public Customer(Long id, String name, String email, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -29,7 +29,7 @@ public class Customer {
         return password;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

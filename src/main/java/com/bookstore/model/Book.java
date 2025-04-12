@@ -1,7 +1,7 @@
 package com.bookstore.model;
 
 public class Book {
-    private int id;
+    private Long id;
     private String title;
     private String author;
     private String category;
@@ -10,7 +10,7 @@ public class Book {
     private double price;
     private int stock;
 
-    public Book(int id, String title, String author, String category, int publicationYear, String isbn, double price,int stock) {
+    public Book(Long id, String title, String author, String category, int publicationYear, String isbn, double price,int stock) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -21,7 +21,7 @@ public class Book {
         this.stock = stock;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -53,7 +53,7 @@ public class Book {
         return stock;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
