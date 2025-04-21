@@ -10,6 +10,8 @@ public class Book {
     private double price;
     private int stock;
 
+    public Book(){}
+
     public Book(Long id, String title, String author, String category, int publicationYear, String isbn, double price,int stock) {
         this.id = id;
         this.title = title;
