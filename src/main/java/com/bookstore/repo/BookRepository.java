@@ -36,5 +36,15 @@ public class BookRepository {
         books.remove(id);
     }
 
+    public List<Book> findByAuthorId(Long authorId) {
+        List<Book> authorBooks = new ArrayList<>();
+        for (Book book : books.values()) {
+            if (book.getAuthorId().equals(authorId)) {
+                authorBooks.add(book);
+            }
+        }
+        return authorBooks;
+    }
+
 
 }

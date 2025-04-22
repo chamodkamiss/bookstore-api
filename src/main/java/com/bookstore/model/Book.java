@@ -3,7 +3,7 @@ package com.bookstore.model;
 public class Book {
     private Long id;
     private String title;
-    private String author;
+    private Long authorId;
     private String category;
     private int publicationYear;
     private String isbn;
@@ -12,10 +12,10 @@ public class Book {
 
     public Book(){}
 
-    public Book(Long id, String title, String author, String category, int publicationYear, String isbn, double price,int stock) {
+    public Book(Long id, String title, Long authorId, String category, int publicationYear, String isbn, double price,int stock) {
         this.id = id;
         this.title = title;
-        this.author = author;
+        this.authorId = authorId;
         this.category = category;
         this.publicationYear = publicationYear;
         this.isbn = isbn;
@@ -31,10 +31,10 @@ public class Book {
         return title;
     }
 
-    public String getAuthor() {
-        return author;
+    public Long getAuthorId() {
+        return authorId;
     }
-
+    
     public String getCategory() {
         return category;
     }
@@ -63,12 +63,8 @@ public class Book {
         this.title = title;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
     }
 
     public void setPublicationYear(int publicationYear) {
