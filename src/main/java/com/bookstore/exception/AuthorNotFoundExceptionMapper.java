@@ -9,11 +9,11 @@ import jakarta.ws.rs.ext.ExceptionMapper;
 import jakarta.ws.rs.ext.Provider;
 
 @Provider
-public class CustomerNotFoundExceptionMapper implements ExceptionMapper<CustomerNotFoundException> {
+public class AuthorNotFoundExceptionMapper implements ExceptionMapper<AuthorNotFoundException> {
     @Override
-    public Response toResponse(CustomerNotFoundException exception) {
+    public Response toResponse (AuthorNotFoundException exception) {
         Map<String, String> error = new HashMap<>();
-        error.put("error", "Customer Not Found");
+        error.put("error", "Author Not Found");
         error.put("message", exception.getMessage());
         
         return Response.status(Response.Status.NOT_FOUND)
