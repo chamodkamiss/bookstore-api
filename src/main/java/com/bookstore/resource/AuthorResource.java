@@ -67,7 +67,9 @@ public class AuthorResource {
             throw new AuthorNotFoundException("Author with id "+ id + " not found.");
         }
         authorRepository.delete(id);
-        return Response.noContent().build();
+        return Response.ok()
+        .entity("Author with id " + id + " deleted successfully.")
+        .build();
     }
 
     @GET
