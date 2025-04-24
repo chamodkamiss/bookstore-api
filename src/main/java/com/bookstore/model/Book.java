@@ -4,6 +4,7 @@ public class Book {
     private Long id;
     private String title;
     private Long authorId;
+    private String authorName;
     private String category;
     private int publicationYear;
     private String isbn;
@@ -12,10 +13,11 @@ public class Book {
 
     public Book(){}
 
-    public Book(Long id, String title, Long authorId, String category, int publicationYear, String isbn, double price,int stock) {
+    public Book(Long id, String title, Long authorId,String authorName, String category, int publicationYear, String isbn, double price,int stock) {
         this.id = id;
         this.title = title;
         this.authorId = authorId;
+        this.authorName = authorName;
         this.category = category;
         this.publicationYear = publicationYear;
         this.isbn = isbn;
@@ -33,6 +35,10 @@ public class Book {
 
     public Long getAuthorId() {
         return authorId;
+    }
+
+    public String getAuthorName() {
+        return authorName;
     }
     
     public String getCategory() {
@@ -65,6 +71,14 @@ public class Book {
 
     public void setAuthorId(Long authorId) {
         this.authorId = authorId;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public void setPublicationYear(int publicationYear) {
