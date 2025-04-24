@@ -3,7 +3,9 @@ package com.bookstore;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.bookstore.exception.AuthorNotFoundException;
 import com.bookstore.exception.BookNotFoundExceptionMapper;
+import com.bookstore.resource.AuthorResource;
 import com.bookstore.resource.BookResource;
 
 import jakarta.ws.rs.ApplicationPath;
@@ -16,8 +18,13 @@ public class BookstoreApplication extends Application {
     public Set<Class<?>> getClasses() {
         Set<Class<?>> classes = new HashSet<>();
         
+        // Register resources
         classes.add(BookResource.class);
+        classes.add(AuthorResource.class);
+
+        // Register exception mappers
         classes.add(BookNotFoundExceptionMapper.class);
+        classes.add(AuthorNotFoundException.class);
         return classes;
     }
 }

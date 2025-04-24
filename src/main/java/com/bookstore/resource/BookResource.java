@@ -56,7 +56,9 @@ public class BookResource {
             throw new BookNotFoundException("Book with id " + id + " not found");
         }
         bookRepository.delete(id);
-        return Response.noContent().build();
+        return Response.ok()
+        .entity("Book with id " + id + " deleted successfully.")
+        .build();
     }
 
 }
