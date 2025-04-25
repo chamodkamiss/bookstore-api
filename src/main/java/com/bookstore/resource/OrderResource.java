@@ -37,8 +37,7 @@ public class OrderResource {
         if (cart.getItems().isEmpty()) {
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity("Cart is empty. Cannot create order.")
-                    .build();
-            
+                    .build();    
         }
 
         // Check stock availability and calculate total amount
