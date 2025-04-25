@@ -4,10 +4,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.bookstore.exception.AuthorNotFoundException;
+import com.bookstore.exception.AuthorNotFoundExceptionMapper;
 import com.bookstore.exception.BookNotFoundExceptionMapper;
+import com.bookstore.exception.CartNotFoundExceptionMapper;
 import com.bookstore.exception.CustomerNotFoundExceptionMapper;
+import com.bookstore.exception.OutOfStockExceptionMapper;
 import com.bookstore.resource.AuthorResource;
 import com.bookstore.resource.BookResource;
+import com.bookstore.resource.CartResource;
 import com.bookstore.resource.CustomerResource;
 
 import jakarta.ws.rs.ApplicationPath;
@@ -24,11 +28,15 @@ public class BookstoreApplication extends Application {
         classes.add(BookResource.class);
         classes.add(AuthorResource.class);
         classes.add(CustomerResource.class);
+        classes.add(CartResource.class);
 
         // Register exception mappers
         classes.add(BookNotFoundExceptionMapper.class);
-        classes.add(AuthorNotFoundException.class);
+        classes.add(AuthorNotFoundExceptionMapper.class);
         classes.add(CustomerNotFoundExceptionMapper.class);
+        classes.add(CartNotFoundExceptionMapper.class);
+        classes.add(OutOfStockExceptionMapper.class);
+        
         return classes;
     }
 }

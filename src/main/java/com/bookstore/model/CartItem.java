@@ -4,6 +4,8 @@ public class CartItem {
     private Long bookId;
     private int quantity;
 
+    public CartItem() {}
+
     public CartItem(Long bookId, int quantity) {
         this.bookId = bookId;
         this.quantity = quantity;
