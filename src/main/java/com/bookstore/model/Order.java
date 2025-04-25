@@ -1,5 +1,6 @@
 package com.bookstore.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,6 +10,10 @@ public class Order {
     private List<CartItem> items;
     private double totalAmount;
     private Date orderDate;
+
+    public Order() {
+        this.items = new ArrayList<>();
+    }
 
     public Order(Long id, Long customerId, List<CartItem> items, double totalAmount, Date orderDate) {
         this.id = id;
@@ -47,7 +52,7 @@ public class Order {
     }
 
     public void setItems(List<CartItem> items) {
-        this.items = items;
+        this.items = new ArrayList<>(items);
     }
 
     public void setTotalAmount(double totalAmount) {
