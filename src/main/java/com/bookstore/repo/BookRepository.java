@@ -46,5 +46,13 @@ public class BookRepository {
         return authorBooks;
     }
 
+    public boolean checkStock(Long bookId, int requestedQuantity) {
+        Book book = findById(bookId);
+        if (book == null) {
+            return false;
+        }
+        return book.getStock() >= requestedQuantity;
+    }
+
 
 }

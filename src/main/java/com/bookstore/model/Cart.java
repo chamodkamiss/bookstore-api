@@ -14,6 +14,9 @@ public class Cart {
         this.customerId = customerId;
     }
     public List<CartItem> getItems() {
+        if (items == null) {
+            items = new ArrayList<>();
+        }
         return items;
     }
     public void setItems(List<CartItem> items) {
