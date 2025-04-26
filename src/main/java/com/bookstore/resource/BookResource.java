@@ -1,6 +1,7 @@
 package com.bookstore.resource;
 
 import com.bookstore.exception.BookNotFoundException;
+import com.bookstore.exception.InvalidInputException;
 import com.bookstore.model.Book;
 import com.bookstore.repo.BookRepository;
 
@@ -18,6 +19,8 @@ public class BookResource {
 
     @POST
     public Response createBook(Book book) {
+        // Validate the book object before saving
+        validateBook(book);
         Book savedBook = bookRepository.save(book);
         return Response.created(URI.create("/books/" + savedBook.getId()))
                 .entity(savedBook)
@@ -59,6 +62,22 @@ public class BookResource {
         return Response.ok()
         .entity("Book with id " + id + " deleted successfully.")
         .build();
+    }
+
+    //Helper method for book validation
+    private void validateBook(Book book) {
+        if (book.getTitle() == null || book.getTitle().isEmpty()) {
+            throw new InvalidInputException("Book title cannot be null or empty");
+        }
+        if (book.getAuthorId() == null || book.getAuthorId() == null) {
+            throw new InvalidInputException("Book author cannot be null or empty");
+        }
+        if (book.getPrice() <= 0) {
+            throw new InvalidInputException("Book price must be greater than zero");
+        }
+        if (book.getStock() < 0) {
+            throw new InvalidInputException("Book stock cannot be negative");
+        }
     }
 
 }
