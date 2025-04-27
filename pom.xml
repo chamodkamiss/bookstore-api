@@ -76,7 +76,18 @@
         <configuration>
           <failOnMissingWebXml>false</failOnMissingWebXml>
         </configuration>
-      </plugin>   
+      </plugin>
+      <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+          <port>8080</port>
+          <path>/bookstore</path>
+          <tomcatVersion>9.0.100</tomcatVersion>
+        </configuration>
+      </plugin>
+   
   </plugins>
     <finalName>bookstore-api</finalName>
   </build>

@@ -69,9 +69,7 @@ public class CustomerResource {
             throw new CustomerNotFoundException("Customer with id " + id + " not found");
         }
         customerRepository.deleteById(id);
-        return Response.ok()
-                .entity("Customer with id " + id + " deleted successfully.")
-                .build();
+        return Response.noContent().build();
     }
 
     //Helper method for customer validation

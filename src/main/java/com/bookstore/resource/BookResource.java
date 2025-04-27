@@ -3,6 +3,7 @@ package com.bookstore.resource;
 import com.bookstore.exception.BookNotFoundException;
 import com.bookstore.exception.InvalidInputException;
 import com.bookstore.model.Book;
+import com.bookstore.repo.AuthorRepository;
 import com.bookstore.repo.BookRepository;
 
 import jakarta.ws.rs.*;
@@ -16,6 +17,7 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class BookResource {
     private BookRepository bookRepository = new BookRepository();
+    private AuthorRepository authorRepository = new AuthorRepository();
 
     @POST
     public Response createBook(Book book) {
@@ -49,6 +51,7 @@ public class BookResource {
             throw new BookNotFoundException("Book with id " + id + " not found");
         }
         book.setId(id);
+        validateBook(book);
         return bookRepository.save(book);
     }
 
@@ -59,9 +62,7 @@ public class BookResource {
             throw new BookNotFoundException("Book with id " + id + " not found");
         }
         bookRepository.delete(id);
-        return Response.ok()
-        .entity("Book with id " + id + " deleted successfully.")
-        .build();
+        return Response.noContent().build();
     }
 
     //Helper method for book validation
@@ -72,11 +73,20 @@ public class BookResource {
         if (book.getAuthorId() == null || book.getAuthorId() == null) {
             throw new InvalidInputException("Book author cannot be null or empty");
         }
+        if (authorRepository.findById(book.getAuthorId()) == null) {
+            throw new InvalidInputException("Author with id " + book.getAuthorId() + " does not exist");
+        }
         if (book.getPrice() <= 0) {
             throw new InvalidInputException("Book price must be greater than zero");
         }
         if (book.getStock() < 0) {
             throw new InvalidInputException("Book stock cannot be negative");
+        }
+        if (book.getPublicationYear() > java.time.Year.now().getValue()) {
+            throw new InvalidInputException("Book publication year cannot be in the future");
+        }
+        if (book.getIsbn() == null || book.getIsbn().isEmpty()) {
+            throw new InvalidInputException("Book ISBN cannot be null or empty");
         }
     }
 

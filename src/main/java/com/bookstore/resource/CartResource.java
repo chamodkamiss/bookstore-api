@@ -73,7 +73,7 @@ public class CartResource {
     public Response removeItemFromCart(@PathParam("customerId") Long customerId, @PathParam("bookId") Long bookId) {
         validateCustomerId(customerId);
         validateBookId(bookId);
-        
+
         customerRepository.findById(customerId);
         cartRepository.removeItemFromCart(customerId, bookId);
         Cart updatedCart = cartRepository.getCartForCustomer(customerId);
