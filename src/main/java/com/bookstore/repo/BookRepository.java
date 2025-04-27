@@ -54,5 +54,15 @@ public class BookRepository {
         return book.getStock() >= requestedQuantity;
     }
 
+    public boolean decreaseStock(Long id, int quantity){
+        Book book = findById(id);
+        if(book.getStock() < quantity){
+            return false;
+        }
+        book.setStock(book.getStock() - quantity);
+        books.put(id, book);
+        return true;
+    }
+
 
 }

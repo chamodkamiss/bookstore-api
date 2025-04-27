@@ -9,16 +9,17 @@ import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
 @Provider
-public class CustomerNotFoundExceptionMapper implements ExceptionMapper<CustomerNotFoundException> {
+public class InvalidInputExceptionMapper implements ExceptionMapper<InvalidInputException> {
     @Override
-    public Response toResponse(CustomerNotFoundException exception) {
+    public Response toResponse(InvalidInputException exception) {
         Map<String, String> error = new HashMap<>();
-        error.put("error", "Customer Not Found");
+        error.put("error", "Invalid Input");
         error.put("message", exception.getMessage());
         
-        return Response.status(Response.Status.NOT_FOUND)
+        return Response.status(Response.Status.BAD_REQUEST)
                 .entity(error)
                 .type(MediaType.APPLICATION_JSON)
                 .build();
     }
+    
 }
