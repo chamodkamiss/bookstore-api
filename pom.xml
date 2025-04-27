@@ -8,53 +8,44 @@
   <name>bookstore-api Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <properties>
-  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  <maven.compiler.source>1.8</maven.compiler.source>
-  <maven.compiler.target>1.8</maven.compiler.target>
-  <jersey.version>3.1.1</jersey.version>
-</properties>
-<dependencies>
-  <!-- Jakarta EE API -->
-  <dependency>
-    <groupId>jakarta.ws.rs</groupId>
-    <artifactId>jakarta.ws.rs-api</artifactId>
-    <version>3.1.0</version>
-  </dependency>
-
-  <!-- Jersey 3.x (Jakarta EE Implementation) -->
-  <dependency>
-    <groupId>org.glassfish.jersey.containers</groupId>
-    <artifactId>jersey-container-servlet</artifactId>
-    <version>${jersey.version}</version>
-  </dependency>
-
-  <dependency>
-    <groupId>org.glassfish.jersey.media</groupId>
-    <artifactId>jersey-media-json-jackson</artifactId>
-    <version>${jersey.version}</version>
-  </dependency>
-
-  <dependency>
-    <groupId>org.glassfish.jersey.inject</groupId>
-    <artifactId>jersey-hk2</artifactId>
-    <version>${jersey.version}</version>
-  </dependency>
-
-  <!-- Jakarta Servlet API -->
-  <dependency>
-    <groupId>jakarta.servlet</groupId>
-    <artifactId>jakarta.servlet-api</artifactId>
-    <version>5.0.0</version>
-    <scope>provided</scope>
-  </dependency>
-
-
-    <!-- JUnit for Testing -->
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <maven.compiler.source>1.8</maven.compiler.source>
+      <maven.compiler.target>1.8</maven.compiler.target>
+      <jersey.version>2.35</jersey.version>
+  </properties>
+  <dependencies>
+    <!-- JAX-RS API -->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.13.2</version>
-      <scope>test</scope>
+        <groupId>javax.ws.rs</groupId>
+        <artifactId>javax.ws.rs-api</artifactId>
+        <version>2.1.1</version>
+    </dependency>
+
+    <!-- Jersey Implementation -->
+    <dependency>
+        <groupId>org.glassfish.jersey.containers</groupId>
+        <artifactId>jersey-container-servlet</artifactId>
+        <version>${jersey.version}</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.glassfish.jersey.inject</groupId>
+        <artifactId>jersey-hk2</artifactId>
+        <version>${jersey.version}</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.glassfish.jersey.media</groupId>
+        <artifactId>jersey-media-json-jackson</artifactId>
+        <version>${jersey.version}</version>
+    </dependency>
+
+    <!-- Servlet API -->
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>3.1.0</version>
+        <scope>provided</scope>
     </dependency>
   </dependencies>
   <build>
@@ -83,11 +74,10 @@
         <version>2.2</version>
         <configuration>
           <port>8080</port>
-          <path>/bookstore</path>
+          <path>/</path>
           <tomcatVersion>9.0.100</tomcatVersion>
         </configuration>
       </plugin>
-   
   </plugins>
     <finalName>bookstore-api</finalName>
   </build>
